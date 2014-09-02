@@ -1,0 +1,70 @@
+http://manned.org/realpath/8fbcef32
+
+REALPATH(1)                          Debian                          REALPATH(1)
+
+
+
+NAME
+       realpath - return the canonicalised absolute pathname
+
+SYNOPSIS
+       realpath [-s|--strip] [-z|--zero]  filename  ...
+       realpath --h|--help
+       realpath --v|--version
+
+DESCRIPTION
+       realpath  converts  each filename argument to an absolute pathname, which
+       has no components that are  symbolic  links  or  the  special  .   or  ..
+       directory entries.  (See realpath(3) for more information.)
+       Please  note  that  mostly the same functionality is provided by the `-f'
+       option of the readlink(1) command.
+
+       If option -s is used realpath only removes .  and  ..   directories,  but
+       not symbolic links from filename.
+
+       Each  converted  pathname  is  output  to the standard output, on its own
+       line.
+
+OPTIONS
+       -s,--strip
+            Only strip .  and .., but do not resolve symbolic links.
+
+       -z,--zero
+            Separate  output  filenames  with  the  null  character  instead  of
+            newline, so it can be used with the `-0' option of xargs(1).
+
+       -h,--help
+            Print short usage information.
+
+       -v,--version
+            Show realpath's version number.
+
+EXAMPLES
+       Let's  suppose  that  /usr/bin/X11  is  a  symbolic link, which points to
+       directory /usr/bin.
+       Than
+              realpath /../usr/bin/X11/./xterm
+       prints
+              /usr/bin/xterm
+       but
+              realpath -s /../usr/bin/X11/./xterm
+       outputs
+              /usr/bin/X11/xterm
+
+EXIT STATUS
+       realpath returns a zero exit code when  all  pathnames  was  successfully
+       converted.
+       In  case  of  any  errors (e.g. missing or unavailable directories in the
+       path), realpath prints error message to stderr  and  returns  a  non-zero
+       exit code.
+
+SEE ALSO
+       basename(1), dirname(1), readlink(1), realpath(3)
+
+AUTHOR
+       Lars Wirzenius <liw@iki.fi>, as part of the dwww package.
+       Modified by Robert Luberda <robert@debian.org>.
+
+
+
+Debian                            May 7th, 2006                      REALPATH(1)
