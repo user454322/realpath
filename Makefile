@@ -6,4 +6,4 @@ realpath: realpath.c
 	$(CC) -o realpath realpath.c
 
 clean:
-	-rm -f realpath
+	rm -f realpath
