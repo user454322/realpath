@@ -1,4 +1,4 @@
-///opt/local/include
+/// opt / local / include
 
 
 #include <sys/syslimits.h>
@@ -12,58 +12,49 @@
 
 #define	VERSION	"0.0.1"
 
-static void print_version(void);
-static void usage(void);
+static void	print_version(void);
+static void	usage(void);
 
 
 int
 main(int argc, char **argv)
 {
-	int opt;
-	bool qflag = false;
-	
-	while ((opt = getopt(argc, argv, "qhv")) != -1) {
+	int		opt;
+	bool		hflag    , qflag, vflag;
+	hflag = false;
+	qflag = false;
+	vflag = false;
+
+	while ((opt = getopt(argc, argv, "hqv")) != -1) {
 		switch (opt) {
+		case 'h':
+			hflag = true;
+			printf("h\n");
+			continue;
+
 		case 'q':
 			qflag = true;
-			break;
-			
+			printf("q\n");
+			continue;
+
 		case 'v':
-			print_version();
-			exit(0);
-			
-		case 'h':
-			usage();
-			exit(0);
-			
+			vflag = true;
+			printf("v\n");
+			continue;
+
 		case '?':
 		default:
 			usage();
-			exit(1);		
+			exit(1);
 		}
 	}
 
-	char real_path[PATH_MAX];
-	char resolved_name[PATH_MAX];
-	const char *path = *argv != NULL ? argv++ : "./";
-	int exit_val = 0;
-		
-	real_path = realpath(path, resolved_name);
-	
-	/*
-	 * If resolved_name was non-NULL, it will contains the pathname which
-	 * caused the problem.
-	 */
-	 if (realpath != NULL) {
-	 	printf("%s\n", real_path);
-	 	
-	 } else if (!qflag) {
-	 	warn("%s\n", resolved_name);
-	 	exit_val = 1;
-	 }
-	 
-	 exit(exit_val);
-
+	if (!(hflag ^ qflag ^ vflag) || (hflag | qflag | vflag)) {
+		/* (flags are mutually exclusive) and (all flags can't be on) */
+		usage();
+		exit(2);
+	}
+	exit(99);
 }
 
 static void
@@ -75,5 +66,7 @@ print_version(void)
 static void
 usage(void)
 {
-	printf("Usage: realpath [-q] [path]\n");
+	printf("Usage: realpath [-q] [path ...]\n"
+	       "       realpath -h\n"
+	       "       realpath -v\n");
 }
