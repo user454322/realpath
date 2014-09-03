@@ -75,5 +75,5 @@ print_version(void)
 static void
 usage(void)
 {
-	printf("usage: realpath [-q] [path]\n");
+	printf("Usage: realpath [-q] [path]\n");
 }
