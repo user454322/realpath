@@ -19,38 +19,46 @@ static void	usage(void);
 int
 main(int argc, char **argv)
 {
-	int		opt;
-	bool		hflag    , qflag, vflag;
+	int opt, qindex;
+	const int valid_index = 2; //options are mutually exclusive, so they should be the first option	
+	bool hflag, qflag, vflag;
+	qindex = 0;
 	hflag = false;
 	qflag = false;
 	vflag = false;
 
-	while ((opt = getopt(argc, argv, "hqv")) != -1) {
-		switch (opt) {
-		case 'h':
+	while ((opt = getopt(argc, argv, "hqv")) != -1) {			
+		if (opt == 'h') {
 			hflag = true;
-			printf("h\n");
+			printf("h    optind=%d\n",optind);
 			continue;
 
-		case 'q':
+		} else if (opt == 'q') {
 			qflag = true;
-			printf("q\n");
-			continue;
+			qindex = optind;
+			printf("q    optind=%d\n",optind);
+			if (valid_index == qindex)
+				break;
+			else
+				continue;
 
-		case 'v':
+		} else if (opt == 'v') {
 			vflag = true;
-			printf("v\n");
+			printf("v    optind=%d\n",optind);
+                        print_version();
 			continue;
-
-		case '?':
-		default:
+			
+		} else {
 			usage();
 			exit(1);
 		}
+
 	}
 
-	if (!(hflag ^ qflag ^ vflag) || (hflag | qflag | vflag)) {
-		/* (flags are mutually exclusive) and (all flags can't be on) */
+	if ((valid_index != qindex) || !(hflag ^ qflag ^ vflag)) {
+		/* 
+		 * (qflag is not at the beginning)
+		 *  (options are mutually exclusive) */
 		usage();
 		exit(2);
 	}
