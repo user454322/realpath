@@ -46,9 +46,12 @@ main(int argc, char **argv)
 	}
 	
 	char *rp;
-	char *path = ".";
+	char *path; 
 	char resolved_name[PATH_MAX];
 	int exit_val = 0;
+	
+	argv += optind;
+	path = *argv != NULL ? *argv++ : ".";
 	if ((rp = realpath(path, resolved_name)) != NULL){
 		printf("%s\n", rp);
 
