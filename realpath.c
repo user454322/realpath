@@ -12,57 +12,55 @@
 
 #define	VERSION	"0.0.1"
 
+
 static void	print_version(void);
-static void	usage(void);
+static void	usage(FILE *restrict stream);
 
 
 int
 main(int argc, char **argv)
 {
-	int opt, qindex;
-	const int valid_index = 2; //options are mutually exclusive, so they should be the first option	
-	bool hflag, qflag, vflag;
-	qindex = 0;
-	hflag = false;
-	qflag = false;
-	vflag = false;
+        int opt;
+        /* options are mutually exclusive, so they should be at the beginning */
+	const int valid_index = 2; 
+	bool qflag = false;
 
-	while ((opt = getopt(argc, argv, "hqv")) != -1) {			
-		if (opt == 'h') {
-			hflag = true;
-			printf("h    optind=%d\n",optind);
-			continue;
+	while ((opt = getopt(argc, argv, "hqv")) != -1) {
+		if (opt == 'h' && optind == valid_index) {
+			usage(stdout);
+			exit(0);
 
-		} else if (opt == 'q') {
+		} else if (opt == 'q' && optind == valid_index) {
 			qflag = true;
-			qindex = optind;
-			printf("q    optind=%d\n",optind);
-			if (valid_index == qindex)
-				break;
-			else
-				continue;
+			break;
 
-		} else if (opt == 'v') {
-			vflag = true;
-			printf("v    optind=%d\n",optind);
+		} else if (opt == 'v' && optind == valid_index) {
                         print_version();
-			continue;
+			exit(0);
 			
 		} else {
-			usage();
+			usage(stderr);
 			exit(1);
 		}
 
 	}
+	
+	char *rp;
+	char *path = ".";
+	char resolved_name[PATH_MAX];
+	int exit_val = 0;
+	if ((rp = realpath(path, resolved_name)) != NULL){
+		printf("%s\n", rp);
 
-	if ((valid_index != qindex) || !(hflag ^ qflag ^ vflag)) {
-		/* 
-		 * (qflag is not at the beginning)
-		 *  (options are mutually exclusive) */
-		usage();
-		exit(2);
+	} else {
+	//If resolved_name was non-NULL, it will contains the pathname which caused the problem.
+		if (!qflag)
+			warn("%s", resolved_name);
+		exit_val =1;
 	}
-	exit(99);
+
+
+	exit(exit_val);
 }
 
 static void
@@ -72,9 +70,10 @@ print_version(void)
 }
 
 static void
-usage(void)
+usage(FILE *restrict stream)
 {
-	printf("Usage: realpath [-q] [path ...]\n"
-	       "       realpath -h\n"
-	       "       realpath -v\n");
+	fprintf(stream, 
+		"Usage: realpath [-q] [path ...]\n"
+		"       realpath -h\n"
+		"       realpath -v\n");
 }
