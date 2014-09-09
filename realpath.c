@@ -86,7 +86,7 @@ main(int argc, char **argv)
 				 * problem. realpath(3)
 				 */
 				warn("%s", resolved_name);
-			exit_val =1;
+			exit_val = 2;
 		}
 	} while ((path = *argv++) != NULL);
 
