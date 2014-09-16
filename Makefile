@@ -7,3 +7,4 @@ realpath: realpath.c
 
 clean:
 	rm -f realpath
+	rm -fr test_files_*

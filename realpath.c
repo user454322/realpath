@@ -34,7 +34,8 @@
 
 
 #define	VERSION	"0.0.1"
-
+#define	INVALID_OPTION_ERROR	1
+#define	REAL_PATH_ERROR	2
 
 static void	print_version(void);
 static void	usage(FILE *restrict stream);
@@ -63,7 +64,7 @@ main(int argc, char **argv)
 			
 		} else {
 			usage(stderr);
-			exit(1);
+			exit(INVALID_OPTION_ERROR);
 		}
 
 	}
@@ -86,7 +87,7 @@ main(int argc, char **argv)
 				 * problem. realpath(3)
 				 */
 				warn("%s", resolved_name);
-			exit_val = 2;
+			exit_val = REAL_PATH_ERROR;
 		}
 	} while ((path = *argv++) != NULL);
 
