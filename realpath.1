@@ -7,7 +7,7 @@
 \fBrealpath\fR \- return resolved physical path
 .
 .SH "SYNOPSIS"
-\fBrealpath\fR [\-q] [path \.\.\.]
+\fBrealpath\fR [\-q] [filename \.\.\.]
 .
 .br
 \fBrealpath\fR \fB\-h\fR
@@ -17,28 +17,74 @@
 .
 .br
 .
+.P
+.
+.br
+.
 .SH "DESCRIPTION"
+\fBrealpath\fR uses \fBrealpath(3)\fR to resolve the path of the filename(s) supplied as arguments\.
+.
+.P
+.
+.br
 .
 .SH "OPTIONS"
+\fB\-q\fR \fBrealpath\fR is executed quitely, i\.e\., warnings are not printed on errors\.
+.
+.P
+\fB\-h\fR Prints usage information\.
+.
+.P
+\fB\-v\fR Prints \fBrealpath\fR version\.
+.
+.P
+.
+.br
 .
 .SH "EXAMPLES"
+Regardless of the current directory:
+.
+.br
+\fBrealpath /tmp\fR prints \fB/private/tmp\fR which is the physical path\.
+.
+.P
+\fBrealpath ~ /opt/local/\fR prints \fB/Users/jalcazar\fR \fB/opt/local\fR
+.
+.P
+.
+.br
+\fBrealpath \-q /not_existent_path\fR does not print anything because \fB\-q\fR was used\.
+.
+.P
+\fBrealpath /not_existent_path\fR prints \fBrealpath: /not_existent_path: No such file or directory\fR to the standard error output\.
+.
+.P
+.
+.br
+.
+.SH "EXIT STATUS"
+.
+.IP "1." 4
+Exits with 0 status on success\.
+.
+.IP "2." 4
+If \fB\-q\fR is used exits with 0 status even if errors occurred\.
+.
+.IP "3." 4
+Exits with non 0 status if errors occur and \fB\-q\fR was not used\.
+.
+.IP "" 0
+.
+.P
+.
+.br
 .
 .SH "SEE ALSO"
+\fBrealpath(3)\fR \fBreadlink(1)\fR
+.
+.P
+.
+.br
 .
 .SH "AUTHORS"
 Copyright (c) 2014, Javier E\. Alcazar
-.
-.P
-[\-q] [path \.\.\.] realpath \-h realpath \-v This document created by ron\. http://rtomayko\.github\.io/ronn/ronn\.1\.html#EXAMPLES
-.
-.P
-http://www\.cyberciti\.biz/faq/linux\-unix\-creating\-a\-manpage/
-.
-.P
-ronn \-\-pipe \-\-roff README\.md > realpath\.1
-.
-.P
-https://github\.com/rtomayko/ronn/blob/master/man/ronn\.1\.ronn
-.
-.P
-https://github\.com/rtomayko/ronn/blob/master/lib/ronn/roff\.rb

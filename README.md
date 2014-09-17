@@ -17,22 +17,23 @@ realpath(1) -- return resolved physical path
 
 ## OPTIONS
 
- * `q`: `realpath` is executed quitely, i.e., warnings are not printed on errors.
+ `-q` `realpath` is executed quitely, i.e., warnings are not printed on errors.
 
-* `h`:Prints usage information.
-        
-* `v`: Prints `realpath` version.
+ `-h` Prints usage information.
+
+ `-v` Prints `realpath` version.
 
 <br>
 
 ## EXAMPLES
 
-Regardless of the current directory        
+Regardless of the current directory:<br>
  `realpath /tmp`
  prints
  `/private/tmp` 
 which is the physical path.
-        
+
+
  `realpath  ~ /opt/local/`
 prints
 `/Users/jalcazar`
@@ -40,7 +41,7 @@ prints
 
 <br>
 `realpath -q /not_existent_path`
-Does not print anything because `-q` was used.
+does not print anything because `-q` was used.
 
 `realpath /not_existent_path`
 prints
@@ -67,3 +68,6 @@ to the standard error output.
 
 Copyright (c) 2014, Javier E. Alcazar
 
+<!---
+ ronn --pipe --roff README.md > realpath.1
+-->
