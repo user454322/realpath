@@ -1,0 +1,31 @@
+http://svn.macports.org/repository/macports/trunk/dports/sysutils/littleutils/Portfile
+contains lrealpath
+
+
+
+
+# $Id$
+
+PortSystem          1.0
+
+name                realpath
+version             0.0.1
+categories          sysutils
+platforms           darwin
+license             BSD
+maintainers         jalcazar
+description         realpath
+long_description    realpath uses realpath(3) to resolve the path of the \
+                    filename(s) supplied as arguments.
+homepage            https://github.com/user454322/realpath
+
+
+
+master_sites       ${homepage}${version}
+
+checksums          sha256  4251fcb739abcc85925050b286b1f9c3cd3fbbace7f35796ef4ffa322509c4ea
+         
+
+configure.args      -b=${prefix}/bin \
+                    -m=${prefix}/share/man
+

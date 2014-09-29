@@ -1,4 +1,4 @@
 Makefile
 .DS_Store
-realpath
+./realpath
 *.BAK
