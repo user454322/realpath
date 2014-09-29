@@ -1,2 +1,4 @@
+Makefile
+.DS_Store
 realpath
 *.BAK
