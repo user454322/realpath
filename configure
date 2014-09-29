@@ -1,0 +1,49 @@
+#!/bin/sh
+
+#set -o nounset
+set -o errexit
+
+#
+#----Default settings
+#
+readonly DEFAULT_BIN_PATH="/bin"
+readonly DEFAULT_MAN_PATH="/usr/share/man"
+
+
+#
+#----Functions
+#
+function usage() {
+	echo "$0 -b <bin_path> -m <man_path>"
+}
+
+#
+#----Execution
+#
+while getopts "b:m:" option; do
+	case "${option}"
+	in
+		b) BIN_PATH=${OPTARG};;
+		
+		m) MAN_PATH=${OPTARG};;
+		
+		*)
+			usage
+			exit 1
+			;;
+		
+  esac
+done
+
+if [ "x${BIN_PATH}" == "x" ]; then
+	readonly BIN_PATH="$DEFAULT_BIN_PATH"
+fi
+
+if [ "x${MAN_PATH}" == "x" ]; then
+	readonly MAN_PATH="$DEFAULT_MAN_PATH"
+fi
+
+
+\cp Makefile.template Makefile
+\perl -i -pe s:BIN_PATH_VAL:"$BIN_PATH":g Makefile
+\perl -i -pe s:MAN_PATH_VAL:"$MAN_PATH":g Makefile
