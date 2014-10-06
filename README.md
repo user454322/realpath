@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/user454322/realpath.png?branch=master)](https://travis-ci.org/user454322/realpath)
+
 realpath(1) -- return resolved physical path
 =================================
 
