@@ -2,3 +2,5 @@ language: objective-c
 
 compiler: clang
 
+script: ./configure && make && make test
+
