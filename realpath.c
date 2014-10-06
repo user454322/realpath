@@ -77,7 +77,7 @@ main(int argc, char **argv)
 	argv += optind;
 	path = *argv != NULL ? *argv++ : ".";
 	do{
-		if ((rp = realpath(path, resolved_name)) != NULL){
+		if ((rp = realpath(path, resolved_name)) != NULL) {
 			printf("%s\n", rp);
 
 		} else {
