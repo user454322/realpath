@@ -1,31 +1,27 @@
-http://svn.macports.org/repository/macports/trunk/dports/sysutils/littleutils/Portfile
-contains lrealpath
-
-
-
-
 # $Id$
 
 PortSystem          1.0
 
 name                realpath
-version             0.0.1
+version             1.0.0
 categories          sysutils
 platforms           darwin
 license             BSD
-maintainers         jalcazar
-description         realpath
+maintainers         dev.modprobe@yahoo.com.mx
+description         realpath(1)
 long_description    realpath uses realpath(3) to resolve the path of the \
-                    filename(s) supplied as arguments.
+                    filename(s) supplied as arguments and prints the result \
+                    to stdout.
 homepage            https://github.com/user454322/realpath
-
-
-
-master_sites       ${homepage}${version}
-
-checksums          sha256  4251fcb739abcc85925050b286b1f9c3cd3fbbace7f35796ef4ffa322509c4ea
-         
-
+master_sites       ${homepage}/archive/v${version}.tar.gz
+checksums          sha256  79670abf459a9d6e0a509fe145a18702077f51caf5659bab7ab235ce8e4f28ca
 configure.args      -b=${prefix}/bin \
                     -m=${prefix}/share/man
 
+notice:fetch --->  Attempting to fetch realpath-1.0.0.tar.gz from https://github.com/user454322/realpath/archive/v1.0.0.tar.gz
+                                                                                                                realpath-1.0.0.tar.gz
+:debug:fetch Fetching distfile failed: The requested URL returned error: 404 Not Found
+:notice:fetch --->  Attempting to fetch realpath-1.0.0.tar.gz from http://mse.uk.distfiles.macports.org/sites/distfiles.macports.org/realpath
+:debug:fetch Fetching distfile failed: The requested URL returned error: 404 Not Found
+:notice:fetch --->  Attempting to fetch realpath-1.0.0.tar.gz from http://fco.it.distfiles.macports.org/mirrors/macports-distfiles/realpath
+:debug:fetch Fetching distfile failed: The requested URL returned error: 404 Not Found
