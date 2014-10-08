@@ -33,7 +33,7 @@
 #include <unistd.h>
 
 
-#define	VERSION	"0.0.1"
+#define	VERSION	"1.0.0"
 #define	INVALID_OPTION_ERROR	1
 #define	REAL_PATH_ERROR	2
 
