@@ -11,6 +11,7 @@ readonly GREEN='\033[0;32m'
 readonly NO_COLOR='\033[0m'
 readonly NOW="$(date +'%Y-%m-%d-%H.%M.%S')"
 readonly PROGRAM_PATH="./realpath"
+readonly PWD="$(ruby -e "puts File.realpath('$(pwd)')")"
 readonly REAL_PATH_ERROR="2"
 readonly RED='\033[0;31m'
 readonly TEST_DIR="test_files_$NOW"
@@ -60,7 +61,6 @@ function test_no_option() {
 
 	local readonly RESULT=`./realpath`
 	local readonly local EXIT_VAL="$?"
-	local readonly PWD="$(pwd)"
 
 	if [ "$PWD" == "$RESULT" ];then
 		ok
@@ -78,7 +78,7 @@ function test_q_option_file_exists() {
 	local readonly TFILE="${TEST_DIR}/testfile_test_q_option_file_exists"
 	touch "$TFILE"	
 	local RESULT="$($PROGRAM_PATH -q $TFILE)"
-	local EXPECTED="$(pwd)/${TFILE}"
+	local EXPECTED="${PWD}/${TFILE}"
 
 	if [ "$EXPECTED" != "$RESULT" ];then
 		fail 200
@@ -87,7 +87,7 @@ function test_q_option_file_exists() {
 	local readonly QOPT_FILE="${TEST_DIR}/-q"
 	$(touch -- "$QOPT_FILE")
 	local readonly RESULT="$($PROGRAM_PATH -q $QOPT_FILE)"
-	local readonly EXPECTED="$(pwd)/${QOPT_FILE}"
+	local readonly EXPECTED="${PWD}/${QOPT_FILE}"
 
 	if [ "$EXPECTED" == "$RESULT" ];then
 		ok
