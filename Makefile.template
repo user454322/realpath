@@ -1,4 +1,5 @@
 CC=		clang
+DESTDIR?=       ""
 BIN_PATH=	BIN_PATH_VAL
 MAN_PATH=	MAN_PATH_VAL
 
@@ -16,5 +17,6 @@ test:
 	./test.sh
 
 install:
-	install realpath $(BIN_PATH)
-	install -m 0644 realpath.1 $(MAN_PATH)/man1
+	install realpath $(DESTDIR)$(BIN_PATH)
+	install -m 0644 realpath.1 $(DESTDIR)$(MAN_PATH)
+

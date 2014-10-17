@@ -7,7 +7,7 @@ set -o errexit
 #----Default settings
 #
 readonly DEFAULT_BIN_PATH="/bin"
-readonly DEFAULT_MAN_PATH="/usr/share/man"
+readonly DEFAULT_MAN_PATH="/usr/share/man/man1"
 
 
 #
