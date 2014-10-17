@@ -6,7 +6,7 @@ version             1.0.0
 categories          sysutils
 platforms           darwin
 license             BSD
-maintainers         dev.modprobe@yahoo.com.mx
+maintainers         yahoo.com.mx:dev.modprobe 
 description         realpath(1)
 long_description    realpath uses realpath(3) to resolve the path of the \
                     filename(s) supplied as arguments and prints the result \
@@ -14,12 +14,11 @@ long_description    realpath uses realpath(3) to resolve the path of the \
 homepage            https://github.com/user454322/realpath
 master_sites        ${homepage}/archive/
 distfiles           v${version}.tar.gz
-checksums           sha256  79670abf459a9d6e0a509fe145a18702077f51caf5659bab7ab235ce8e4f28ca
+checksums           sha256 0808917e602e4caba9250f159cd7de799a745f5c83ff12cefa099e45986a9e09 
 configure.pre_args  ""
 configure.args      -b ${prefix}/bin \
                     -m ${prefix}/share/man
 build.target        ""
 test.run            yes
 test.cmd            make test
-
 
