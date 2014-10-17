@@ -20,7 +20,6 @@ configure.args      -b ${prefix}/bin \
                     -m ${prefix}/share/man
 build.target        ""
 test.run            yes
-test.cmd 
+test.cmd            make test
 
-https://www.gnu.org/prep/standards/html_node/DESTDIR.html
 
