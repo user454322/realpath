@@ -1,5 +1,4 @@
 CC=		clang
-DESTDIR?=       ""
 BIN_PATH=	BIN_PATH_VAL
 MAN_PATH=	MAN_PATH_VAL
 
