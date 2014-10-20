@@ -2,8 +2,10 @@
 
 PortSystem          1.0
 
-name                realpath
-version             1.0.0
+PortGroup           github 1.0
+
+github.setup        user454322 realpath 1.0.0 v
+github.tarball_from releases
 categories          sysutils
 platforms           darwin
 license             BSD
@@ -12,9 +14,8 @@ description         realpath(1)
 long_description    realpath uses realpath(3) to resolve the path of the \
                     filename(s) supplied as arguments and prints the result \
                     to stdout.
-homepage            https://github.com/user454322/realpath
-master_sites        ${homepage}/archive/
-distfiles           v${version}.tar.gz
+#See https://trac.macports.org/ticket/40518
+github.master_sites ${github.homepage}/archive/[join ${github.tag_prefix} ""]${github.version}
 checksums           sha256 0808917e602e4caba9250f159cd7de799a745f5c83ff12cefa099e45986a9e09
 configure.pre_args  ""
 configure.args      -b ${prefix}/bin \
