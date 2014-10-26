@@ -1,4 +1,4 @@
-CC=		clang
+CC?=		clang
 BIN_PATH=	BIN_PATH_VAL
 MAN_PATH=	MAN_PATH_VAL
 
@@ -6,7 +6,7 @@ MAN_PATH=	MAN_PATH_VAL
 default: realpath
 
 realpath: realpath.c
-	$(CC) -o realpath realpath.c -Werror -Wextra
+	$(CC) -o realpath realpath.c -std=c99 -Werror -Wextra
 
 clean:
 	rm -f realpath
