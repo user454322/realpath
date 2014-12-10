@@ -5,14 +5,15 @@ set -o nounset
 #
 #----Constants
 #
-readonly GENERIC_EXIT_VAL="33"
-readonly INVALID_OPTION_ERROR="1"
+readonly GENERIC_EXIT_VAL='33'
+readonly INVALID_OPTION_ERROR='1'
 readonly GREEN='\033[0;32m'
+readonly NAME_MAX='255'
 readonly NO_COLOR='\033[0m'
 readonly NOW="$(date +'%Y-%m-%d-%H.%M.%S')"
-readonly PROGRAM_PATH="./realpath"
+readonly PROGRAM_PATH='./realpath'
 readonly PWD="$(ruby -e "puts File.realpath('$(pwd)')")"
-readonly REAL_PATH_ERROR="2"
+readonly REAL_PATH_ERROR='2'
 readonly RED='\033[0;31m'
 readonly TEST_DIR="test_files_$NOW"
 
@@ -49,7 +50,7 @@ function ok() {
 
 function random_string() {
 	if [ -c "/dev/urandom" ]; then
-		grep -m 5 -ao '[a-zA-Z0-9]' /dev/urandom | tr '\n' '_' | sed s/_//g
+		grep -m 5 -ao '[a-zA-Z0-9]' /dev/urandom | tr '\n' '_' | sed s/_//g | colrm "$NAME_MAX"
 	else
 		date +"%s"
 	fi
