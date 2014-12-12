@@ -83,7 +83,7 @@ main(int argc, char **argv)
 		} else {
 			if (!qflag)
 				/* If resolved_name was non-NULL, it will
-				 * contains the pathname which caused the
+				 * contain the pathname which caused the
 				 * problem. realpath(3)
 				 */
 				warn("%s", resolved_name);
