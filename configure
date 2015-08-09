@@ -32,7 +32,7 @@ while getopts "b:m:" option; do
 			exit 1
 			;;
 		
-  esac
+	esac
 done
 
 if [ "x${BIN_PATH}" == "x" ]; then
@@ -47,3 +47,4 @@ fi
 \cp Makefile.template Makefile
 \perl -i -pe s:BIN_PATH_VAL:"$BIN_PATH":g Makefile
 \perl -i -pe s:MAN_PATH_VAL:"$MAN_PATH":g Makefile
+

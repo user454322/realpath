@@ -6,8 +6,8 @@ set -o nounset
 #----Constants
 #
 readonly GENERIC_EXIT_VAL='33'
-readonly INVALID_OPTION_ERROR='1'
 readonly GREEN='\033[0;32m'
+readonly INVALID_OPTION_ERROR='1'
 readonly NAME_MAX='255'
 readonly NO_COLOR='\033[0m'
 readonly NOW="$(date +'%Y-%m-%d-%H.%M.%S')"
@@ -152,3 +152,4 @@ test_no_file
 test_usage
 
 \rm -fr "$TEST_DIR"
+

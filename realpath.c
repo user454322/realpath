@@ -68,16 +68,16 @@ main(int argc, char **argv)
 		}
 
 	}
-	
+
 	char *rp;
-	char *path; 
+	char *path;
 	char resolved_name[PATH_MAX];
 	int exit_val = 0;
-	
+
 	argv += optind;
-	path = *argv != NULL ? *argv++ : ".";
+	path = NULL != *argv ? *argv++ : ".";
 	do{
-		if ((rp = realpath(path, resolved_name)) != NULL) {
+		if (NULL != (rp = realpath(path, resolved_name))) {
 			printf("%s\n", rp);
 
 		} else {
@@ -89,7 +89,7 @@ main(int argc, char **argv)
 				warn("%s", resolved_name);
 			exit_val = REAL_PATH_ERROR;
 		}
-	} while ((path = *argv++) != NULL);
+	} while (NULL != (path = *argv++));
 
 	exit(exit_val);
 }
@@ -108,3 +108,4 @@ usage(FILE *restrict stream)
 		"       realpath -h\n"
 		"       realpath -v\n");
 }
+
