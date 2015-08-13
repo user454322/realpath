@@ -50,15 +50,15 @@ main(int argc, char **argv)
 	bool qflag = false;
 
 	while ((opt = getopt(argc, argv, "hqv")) != -1) {
-		if (opt == 'h' && optind == valid_index) {
+		if ('h' == opt && valid_index == optind) {
 			usage(stdout);
 			exit(0);
 
-		} else if (opt == 'q' && optind == valid_index) {
+		} else if ('q' == opt && valid_index == optind) {
 			qflag = true;
 			break;
 
-		} else if (opt == 'v' && optind == valid_index) {
+		} else if ('v' == opt && valid_index == optind) {
                         print_version();
 			exit(0);
 			
