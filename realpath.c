@@ -46,7 +46,7 @@ main(int argc, char **argv)
 {
         int opt;
         /* options are mutually exclusive, so they should be at the beginning */
-	const int valid_index = 2; 
+	const int valid_index = 2;
 	bool qflag = false;
 
 	while ((opt = getopt(argc, argv, "hqv")) != -1) {
@@ -59,9 +59,9 @@ main(int argc, char **argv)
 			break;
 
 		} else if ('v' == opt && valid_index == optind) {
-                        print_version();
+			print_version();
 			exit(0);
-			
+
 		} else {
 			usage(stderr);
 			exit(INVALID_OPTION_ERROR);

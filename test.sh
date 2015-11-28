@@ -103,18 +103,34 @@ function test_q_option_file_exists() {
 function test_no_file() {
 	echo ""
 	echo "Running test_no_file"
-	
-	
-	local readonly NO_FILE="${TEST_DIR}/$(random_string)"	
+
+	local readonly NO_FILE="${TEST_DIR}/$(random_string)"
 	./realpath "$NO_FILE"
 	local EXIT_VAL="$?"
 	assert_numbers_eq "$REAL_PATH_ERROR" "$EXIT_VAL" "test_no_file 301" 301
-	
+
 	./realpath -q "$NO_FILE"
 	local EXIT_VAL="$?"
 	assert_numbers_eq "$REAL_PATH_ERROR" "$EXIT_VAL" "test_no_file 302" 302
 
 	ok
+}
+
+function test_symlink {
+	echo ""
+	echo "Running test_symlink"
+
+	cd "$TEST_DIR"
+	$(random_string) > file
+	ln -s file link
+	local readonly EXPECTED=$(ruby -e "puts File.realpath('link')")
+	cd ..
+	local readonly RESULT=$(./realpath "${TEST_DIR}/link")
+	if [ "$EXPECTED" == "$RESULT" ];then
+		ok
+	else
+		fail 501
+	fi
 
 }
 
@@ -148,6 +164,8 @@ test_no_option
 test_q_option_file_exists
 
 test_no_file
+
+test_symlink
 
 test_usage
 
