@@ -32,7 +32,7 @@ realpath(1) -- return resolved physical path
 Regardless of the current directory:<br>
  `realpath /tmp`
  prints
- `/private/tmp` 
+ `/private/tmp`
 which is the physical path.
 
 
