@@ -6,15 +6,18 @@ set -o errexit
 #
 #----Default settings
 #
-readonly DEFAULT_BIN_PATH="/bin"
-readonly DEFAULT_MAN_PATH="/usr/share/man/man1"
+readonly DEFAULT_BIN_PATH="/"
+readonly DEFAULT_MAN_PATH="/usr/share/man/"
 
 
 #
 #----Functions
 #
 function usage() {
-	echo "$0 -b <bin_path> -m <man_path>"
+	echo "$0 [-b <bin_path>] [-m <man_path>]"
+	echo "  e.g., $0 -b /opt -m /usr/share/man"
+	echo "   The binary would be installed in /opt/bin,"
+	echo "   the man page would be installed in /usr/share/man/man1"
 }
 
 #

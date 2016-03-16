@@ -1,6 +1,6 @@
 CC?=		clang
-BIN_PATH=	BIN_PATH_VAL
-MAN_PATH=	MAN_PATH_VAL
+BIN_PATH=	BIN_PATH_VAL/bin
+MAN_PATH=	MAN_PATH_VAL/man1
 
 
 default: realpath
