@@ -50,7 +50,7 @@ function ok() {
 
 function random_string() {
 	if [ -c "/dev/urandom" ]; then
-		grep -m 5 -ao '[a-zA-Z0-9]' /dev/urandom | tr '\n' '_' | sed s/_//g | colrm "$NAME_MAX"
+		grep -m 9 -ao '[a-zA-Z0-9]' /dev/urandom | tr -d '\n' | colrm "$NAME_MAX"
 	else
 		date +"%s"
 	fi
