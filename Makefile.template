@@ -16,6 +16,10 @@ test:
 	./test.sh
 
 install:
-	install realpath $(DESTDIR)$(BIN_PATH)
+	$(eval FINAL_BIN_DESTDIR = $(DESTDIR)$(BIN_PATH))
+	$(eval FINAL_MAN_DESTDIR = $(DESTDIR)$(MAN_PATH))
+	$(shell if [ ! -d "$(FINAL_BIN_DESTDIR)" ];then mkdir -p "$(FINAL_BIN_DESTDIR)"; fi)
+	install realpath $(FINAL_BIN_DESTDIR)
+	$(shell if [ ! -d "$(FINAL_MAN_DESTDIR)" ];then mkdir -p "$(FINAL_MAN_DESTDIR)"; fi)
 	install -m 0644 realpath.1 $(DESTDIR)$(MAN_PATH)
 

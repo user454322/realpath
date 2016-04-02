@@ -27,14 +27,14 @@ while getopts "b:m:" option; do
 	case "${option}"
 	in
 		b) BIN_PATH=${OPTARG};;
-		
+
 		m) MAN_PATH=${OPTARG};;
-		
+
 		*)
 			usage
 			exit 1
 			;;
-		
+
 	esac
 done
 
