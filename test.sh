@@ -37,7 +37,6 @@ function assert_numbers_eq() {
 function fail() {
 	echo " ${RED}FAILED${NO_COLOR}"
 	if [ "x${1}" == "x" ]; then
-	echo "here"
 		exit "$GENERIC_EXIT_VAL"
 	fi
 
@@ -66,7 +65,7 @@ function test_no_option() {
 	if [ "$PWD" == "$RESULT" ];then
 		ok
 	else
-		fail 100;
+		fail 100
 	fi
 
 	assert_numbers_eq 0 "$EXIT_VAL" "" 101
@@ -149,12 +148,29 @@ function test_usage {
 	ok
 }
 
+function test_version {
+	echo ""
+	echo "Running test_version"
+
+	local readonly EXPECTED_VERSION='1.0.2'
+	local readonly VERSION="$($PROGRAM_PATH -v)"
+
+	if [ "$VERSION" == "$EXPECTED_VERSION" ]; then
+		echo " $VERSION matches $EXPECTED_VERSION"
+	else
+		echo " $VERSION does not match $EXPECTED_VERSION"
+		fail 601
+	fi
+
+	ok
+}
+
 #
 #----Execution
 #
 if [ ! -e "$PROGRAM_PATH" ]; then
 	echo "'$PROGRAM_PATH' doesn't exist"
-	exit 1;
+	exit 1
 fi
 
 mkdir "$TEST_DIR"
@@ -169,5 +185,6 @@ test_symlink
 
 test_usage
 
-\rm -fr "$TEST_DIR"
+test_version
 
+\rm -fr "$TEST_DIR"

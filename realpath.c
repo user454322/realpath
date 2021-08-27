@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2014, Javier
+ * Copyright (c) 2014 - 2021, Javier
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 #include <unistd.h>
 
 
-#define	VERSION	"1.0.0"
+#define	VERSION	"1.0.2"
 #define	INVALID_OPTION_ERROR	1
 #define	REAL_PATH_ERROR	2
 
@@ -103,7 +103,7 @@ print_version(void)
 static void
 usage(FILE *restrict stream)
 {
-	fprintf(stream, 
+	fprintf(stream,
 		"Usage: realpath [-q] [path ...]\n"
 		"       realpath -h\n"
 		"       realpath -v\n");
