@@ -5,7 +5,7 @@ realpath(1) -- return resolved physical path
 
 ## SYNOPSIS
 
-`realpath` [-q] [filename ...]<br>
+`realpath` `[-q] [filename ...]`<br>
 `realpath` `-h`<br>
 `realpath` `-v`<br>
 
@@ -39,9 +39,9 @@ which is the physical path.
  `realpath  ~ /opt/local/`
 prints
 `/Users/jalcazar`
-`/opt/local`
+`/opt/local`  
 
-<br>
+
 `realpath -q /not_existent_path`
 does not print anything because `-q` was used.  
 
