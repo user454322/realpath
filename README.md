@@ -38,7 +38,7 @@ which is the physical path.
 
  `realpath  ~ /opt/local/`
 prints
-`/Users/jalcazar`
+`/Users/javier`
 `/opt/local`  
 
 
@@ -68,7 +68,7 @@ to the standard error output.
 
 ## AUTHORS
 
-Copyright (c) 2014 - 2021, Javier Z.
+Copyright (c) 2014 - 2022, Javier Z.
 
 <!---
  ronn --pipe --roff README.md > realpath.1
