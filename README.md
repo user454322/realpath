@@ -43,7 +43,7 @@ prints
 
 <br>
 `realpath -q /not_existent_path`
-does not print anything because `-q` was used.
+does not print anything because `-q` was used.  
 
 `realpath /not_existent_path`
 prints
