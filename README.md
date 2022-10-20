@@ -68,7 +68,7 @@ to the standard error output.
 
 ## AUTHORS
 
-Copyright (c) 2014 - 2022, Javier Z.
+Copyright (c) 2014 - 2022, Javier.
 
 <!---
  ronn --pipe --roff README.md > realpath.1
