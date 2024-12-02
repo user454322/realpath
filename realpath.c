@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2014 - 2021, Javier
+ * Copyright (c) 2014 - 2024, Javier
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,7 +76,7 @@ main(int argc, char **argv)
 
 	argv += optind;
 	path = NULL != *argv ? *argv++ : ".";
-	do{
+	do {
 		if (NULL != (rp = realpath(path, resolved_name))) {
 			printf("%s\n", rp);
 
